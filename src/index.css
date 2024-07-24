@@ -2,6 +2,8 @@
 @tailwind components;
 @tailwind utilities;
 
+@import url('https://fonts.cdnfonts.com/css/satoshi');
+
 * {
   margin: 0;
   padding: 0;
@@ -12,16 +14,43 @@ html {
   font-size: 62.5%;
   box-sizing: border-box;
 }
-/* body {
+body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  font-family: 'Satoshi', sans-serif;
+  font-size: 12px;
+  color: #647995;
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
-} */
+}
+
+.heavy {
+  color: #1d2739;
+  font-weight: 500;
+}
+
+.darkBG {
+  background-color: rgba(0, 0, 0, 0.2);
+  width: 100vw;
+  height: 100vh;
+  z-index: 1;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  position: absolute;
+}
+.centered {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.modal {
+  background: white;
+  color: white;
+  z-index: 10;
+  border-radius: 6px;
+}
