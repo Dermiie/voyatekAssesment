@@ -5,10 +5,13 @@ import UserTable from './components/UserTable';
 import ModalAddUser from './components/ModalAddUser';
 import ModalEditUser from './components/ModalEditUser';
 import ModalDeleteUser from './components/ModalDeleteUser';
+import { useModal } from './contexts/modalContext';
 
 const bgColor = '#F0F2F5';
 
 function App() {
+  const { modalIsActive, addUserForm, editUserForm, deleteUserForm } =
+    useModal();
   return (
     <div className={`h-[100vh] w-[100%] bg-[${bgColor}] fixed`}>
       <Header></Header>
@@ -18,9 +21,27 @@ function App() {
           <UserTable></UserTable>
         </Frame1>
       </div>
-      {/* <ModalAddUser></ModalAddUser> */}
-      {/* <ModalEditUser></ModalEditUser> */}
-      <ModalDeleteUser></ModalDeleteUser>
+      {modalIsActive && addUserForm ? (
+        <div>
+          <ModalAddUser></ModalAddUser>
+        </div>
+      ) : (
+        ''
+      )}
+      {modalIsActive && editUserForm ? (
+        <div>
+          <ModalEditUser></ModalEditUser>
+        </div>
+      ) : (
+        ''
+      )}
+      {modalIsActive && deleteUserForm ? (
+        <div>
+          <ModalDeleteUser></ModalDeleteUser>
+        </div>
+      ) : (
+        ''
+      )}
     </div>
   );
 }

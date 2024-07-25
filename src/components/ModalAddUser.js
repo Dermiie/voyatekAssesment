@@ -1,12 +1,15 @@
 // const bgColor = '#F0F2F5';
 
+import { useModal } from '../contexts/modalContext';
+
 function ModalAddUser() {
+  const { handleCloseModal } = useModal();
   return (
     <div className="darkBG">
       <div className="centered">
         <div className="modal h-[599px] w-[488px] px-[32px] pt-[32px] pb-[56px] flex flex-col gap-[24px]">
           <header className="relative flex items-center justify-center pt-3">
-            <div className="top-0 right-0 absolute">
+            <div onClick={handleCloseModal} className="top-0 right-0 absolute">
               <img src="./X.png" alt="icon"></img>
             </div>
             <div className="flex flex-col items-center gap-6">

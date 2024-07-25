@@ -1,3 +1,5 @@
+import { useModal } from '../contexts/modalContext';
+
 const tableHeaderData = ['Name', 'Address', 'Role', 'Action'];
 const tableBodyData = [
   {
@@ -23,6 +25,7 @@ const tableBodyData = [
 ];
 
 function UserTable() {
+  const { handleAddUser, handleEditUser, handleDeleteUser } = useModal();
   return (
     <div className=" bg-white fixed w-[1104px] h-[429px] top-[310px] left-[304px] rounded-md">
       <header className="flex gap-2 p-[1.6rem]">
@@ -39,15 +42,21 @@ function UserTable() {
             <p>Filter</p>
           </div>
         </div>
-        <button className="ml-auto bg-[#0A6DE4] text-[#ffffff] px-7 py-[0.8rem] rounded-md">
+        <button
+          onClick={handleAddUser}
+          className="ml-auto bg-[#0A6DE4] text-[#ffffff] px-7 py-[0.8rem] rounded-md"
+        >
           New user
         </button>
       </header>
       <table className="min-w-full divide-y">
         <thead>
           <tr>
-            {tableHeaderData.map((data) => (
-              <th className="text-start px-4 py-5 heavy  bg-[#F0F2F5]">
+            {tableHeaderData.map((data, i) => (
+              <th
+                key={i}
+                className="text-start px-[1.6rem]  py-5 heavy  bg-[#F0F2F5]"
+              >
                 {data}
               </th>
             ))}
@@ -56,10 +65,30 @@ function UserTable() {
         <tbody>
           {tableBodyData.map((row, id) => {
             return (
-              <tr>
-                <td className="text-start px-4 py-5 heavy">{row.name}</td>
-                <td className="text-start px-4 py-5">{row.mail}</td>
-                <td className="text-start px-4 py-5">{row.role}</td>
+              <tr key={id}>
+                <td className="text-start px-[1.6rem] py-[2.4rem] heavy">
+                  {row.name}
+                </td>
+                <td className="text-start px-[1.6rem] py-[2.4rem]">
+                  {row.mail}
+                </td>
+                <td className="text-start px-[1.6rem] py-[2.4rem]">
+                  {row.role}
+                </td>
+                <td className="flex  px-[1.6rem] py-[2.4rem]  gap-3">
+                  <p
+                    onClick={handleEditUser}
+                    className="text-[#0A6DE4] cursor-pointer "
+                  >
+                    Edit
+                  </p>
+                  <p
+                    onClick={handleDeleteUser}
+                    className="text-[#98A2B3] cursor-pointer"
+                  >
+                    Remove
+                  </p>
+                </td>
               </tr>
             );
           })}
